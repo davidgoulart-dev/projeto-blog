@@ -5,7 +5,6 @@ async function getPosts() {
     return await response.json()
 }
 
-
 const PostsList = () => {
     const [posts, setPosts] = useState([])
 

@@ -7,6 +7,7 @@ const AppRoutes  = () => (
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<Posts />} />
+      <Route exact path="/post/:id" element={<Posts />} />
     </Routes>
   </BrowserRouter>
 );

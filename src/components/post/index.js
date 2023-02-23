@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-async function getPosts() {
-    const response = await fetch('http://localhost:3000/json/posts.json')
+async function getPosts(id) {
+    const response = await fetch(`http://localhost:3000/json/post-${id}.json`)
     return await response.json()
 }
 

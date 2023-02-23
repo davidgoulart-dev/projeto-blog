@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 async function getPost(id) {
     const response = await fetch(`http://localhost:3000/json/post-${id}.json`)
@@ -22,7 +23,7 @@ const PostDetails = () => {
 
     return (
         <section>
-
+            <Link to="/">Voltar</Link>
             <div>
                 <img src={post.image} alt="post.title" />
                 <h2>{post.title}</h2>

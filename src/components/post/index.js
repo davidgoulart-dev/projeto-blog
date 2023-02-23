@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-async function getPosts(id) {
+async function getPost(id) {
     const response = await fetch(`http://localhost:3000/json/post-${id}.json`)
     return await response.json()
 }
 
-const PostsList = () => {
-    const [posts, setPosts] = useState([])
+const PostDetails = () => {
+    const [post, setPost] = useState({})
+
+    const { id } = useParams()
 
     useEffect(() => {
         async function fetchData() {
-            const posts = await getPosts()
-            setPosts(posts.data)
+            const post = await getPost(id)
+            setPost(post.data)
         }
 
         fetchData()
@@ -19,14 +22,15 @@ const PostsList = () => {
 
     return (
         <section>
-            {posts.map((post, index) => 
-                <div key={index}>
-                    <img src={post.image} alt="" />
-                    <h2>{post.title}</h2>
-                </div>
-            )}
+
+            <div>
+                <img src={post.image} alt="post.title" />
+                <h2>{post.title}</h2>
+                <p>{post.text}</p>
+            </div>
+
         </section>
     )
 }
 
-export { PostsList }
+export { PostDetails }

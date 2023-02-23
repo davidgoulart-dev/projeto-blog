@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 async function getPost(id) {
     const response = await fetch(`http://localhost:3000/json/post-${id}.json`)
@@ -22,16 +23,24 @@ const PostDetails = () => {
     }, [])
 
     return (
-        <section>
+        <Section>
             <Link to="/">Voltar</Link>
             <div>
-                <img src={post.image} alt="post.title" />
+                <Image src={post.image} alt="post.title" />
                 <h2>{post.title}</h2>
                 <p>{post.text}</p>
             </div>
 
-        </section>
+        </Section>
     )
 }
+const Section = styled.section`
+padding: 50px;`
 
+const Image = styled.img` 
+width: 100%;`
+   
+
+
+ 
 export { PostDetails }
